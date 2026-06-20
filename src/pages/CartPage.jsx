@@ -8,9 +8,7 @@ export default function CartPage() {
   const updateQuantity = useCartStore((state) => state.updateQuantity)
 
   const subtotal = cart.reduce((total, item) => total + (item.price * item.quantity), 0)
-  const tax = subtotal * 0.1
-  const shipping = subtotal > 100 ? 0 : 10
-  const total = subtotal + tax + shipping
+  const total = subtotal
 
   if (cart.length === 0) {
     return (
@@ -29,7 +27,6 @@ export default function CartPage() {
 
   return (
     <div className="min-h-screen bg-luxury-cream">
-      {/* Page Header */}
       <section className="bg-gradient-to-b from-luxury-rose/10 to-luxury-cream py-12">
         <div className="max-w-7xl mx-auto px-4 md:px-6">
           <h1 className="font-serif text-4xl md:text-5xl text-luxury-black">Shopping Cart</h1>
@@ -38,17 +35,20 @@ export default function CartPage() {
 
       <div className="max-w-7xl mx-auto px-4 md:px-6 py-12">
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
+
           {/* Cart Items */}
           <div className="lg:col-span-2">
             <div className="bg-white rounded-lg shadow-md overflow-hidden">
               {cart.map((item, index) => (
-                <div
-                  key={index}
-                  className="border-b border-luxury-gold/20 p-6 flex gap-6 hover:bg-luxury-cream/50 transition"
-                >
+                <div key={index} className="border-b border-luxury-gold/20 p-6 flex gap-6 hover:bg-luxury-cream/50 transition">
+
                   {/* Product Image */}
-                  <div className="w-24 h-24 md:w-32 md:h-32 bg-luxury-cream-dark rounded-lg flex items-center justify-center flex-shrink-0">
-                    <div className="text-5xl md:text-6xl">{item.image}</div>
+                  <div className="w-24 h-24 md:w-32 md:h-32 bg-luxury-cream-dark rounded-lg overflow-hidden flex-shrink-0">
+                    <img
+                      src={item.image}
+                      alt={item.name}
+                      className="w-full h-full object-cover"
+                    />
                   </div>
 
                   {/* Product Info */}
@@ -57,10 +57,10 @@ export default function CartPage() {
                       {item.name}
                     </Link>
                     <p className="text-luxury-black/70 text-sm mb-2">
-                      {item.selectedColor} {item.selectedSize !== 'One Size' && `• ${item.selectedSize}`}
+                      {item.selectedColor}{item.selectedSize !== 'One Size' && ` • ${item.selectedSize}`}
                     </p>
                     <p className="text-xl text-luxury-gold font-serif mb-4">
-                      ${item.price}
+                      ₦{item.price.toLocaleString()}
                     </p>
 
                     {/* Quantity Controls */}
@@ -68,18 +68,14 @@ export default function CartPage() {
                       <button
                         onClick={() => updateQuantity(item.id, item.selectedSize, item.selectedColor, item.quantity - 1)}
                         className="px-3 py-1 border border-luxury-gold text-luxury-black hover:bg-luxury-gold/10"
-                      >
-                        −
-                      </button>
+                      >−</button>
                       <span className="w-8 text-center font-medium">{item.quantity}</span>
                       <button
                         onClick={() => updateQuantity(item.id, item.selectedSize, item.selectedColor, item.quantity + 1)}
                         className="px-3 py-1 border border-luxury-gold text-luxury-black hover:bg-luxury-gold/10"
-                      >
-                        +
-                      </button>
+                      >+</button>
                       <span className="flex-1 text-right font-serif text-lg text-luxury-gold">
-                        ${(item.price * item.quantity).toFixed(2)}
+                        ₦{(item.price * item.quantity).toLocaleString()}
                       </span>
                     </div>
                   </div>
@@ -108,40 +104,29 @@ export default function CartPage() {
               <div className="space-y-4 mb-6 pb-6 border-b-2 border-luxury-gold/20">
                 <div className="flex justify-between text-luxury-black/70">
                   <span>Subtotal</span>
-                  <span className="font-medium">${subtotal.toFixed(2)}</span>
-                </div>
-                <div className="flex justify-between text-luxury-black/70">
-                  <span>Tax (10%)</span>
-                  <span className="font-medium">${tax.toFixed(2)}</span>
+                  <span className="font-medium">₦{subtotal.toLocaleString()}</span>
                 </div>
                 <div className="flex justify-between text-luxury-black/70">
                   <span>Shipping</span>
-                  {shipping === 0 ? (
-                    <span className="font-medium text-luxury-rose">FREE</span>
-                  ) : (
-                    <span className="font-medium">${shipping.toFixed(2)}</span>
-                  )}
+                  <span className="font-medium text-luxury-black/50 text-sm">Calculated at checkout</span>
                 </div>
               </div>
 
               <div className="flex justify-between mb-8 text-lg">
                 <span className="font-serif text-luxury-black">Total</span>
-                <span className="font-serif text-2xl text-luxury-gold">${total.toFixed(2)}</span>
+                <span className="font-serif text-2xl text-luxury-gold">₦{total.toLocaleString()}</span>
               </div>
 
               <Link to="/checkout" className="w-full luxury-btn-primary block text-center text-lg mb-3">
                 Proceed to Checkout
               </Link>
-
-              <button className="w-full luxury-btn-secondary">
+              <Link to="/products" className="w-full luxury-btn-secondary block text-center">
                 Continue Shopping
-              </button>
+              </Link>
 
-              {subtotal < 100 && (
-                <p className="text-xs text-luxury-black/60 mt-4 p-3 bg-luxury-cream-dark rounded">
-                  ✨ Free shipping on orders over $100!
-                </p>
-              )}
+              <p className="text-xs text-luxury-black/60 mt-4 p-3 bg-luxury-cream-dark rounded text-center">
+                ✨ Free delivery available — contact us for details!
+              </p>
             </div>
           </div>
         </div>
