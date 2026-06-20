@@ -8,10 +8,10 @@ export default function AboutPage() {
       <section className="bg-gradient-to-b from-luxury-rose/10 via-luxury-cream to-luxury-cream-dark py-16 md:py-24">
         <div className="max-w-4xl mx-auto px-4 md:px-6 text-center animate-slideUp">
           <h1 className="font-serif text-5xl md:text-6xl text-luxury-black mb-6">
-            About Accessories by Grace
+            About Us
           </h1>
-          <p className="text-xl text-luxury-black/70 leading-relaxed">
-            Every piece tells a story of elegance, craftsmanship, and timeless beauty.
+          <p className="text-xl text-luxury-black/70 leading-relaxed italic">
+            Style. Confidence. Elegance.
           </p>
         </div>
       </section>
@@ -22,115 +22,111 @@ export default function AboutPage() {
           <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
             <div className="text-6xl text-center">👑</div>
             <div className="animate-slideUp">
-              <h2 className="font-serif text-4xl text-luxury-black mb-6">Our Story</h2>
+              <h2 className="font-serif text-4xl text-luxury-black mb-6">
+                Welcome to Everything Accessories by Grace
+              </h2>
               <p className="text-luxury-black/80 mb-4 leading-relaxed text-lg">
-                Accessories by Grace was born from a simple yet powerful belief: that true elegance lies in the details. What began as a personal passion for discovering and curating the finest accessories has blossomed into a luxury brand that celebrates the modern, sophisticated woman and man.
+                Everything Accessories by Grace was born out of a desire to look good and help others do the same. We believe that the right accessories do more than complete an outfit—they boost confidence, express personality, and add a touch of elegance to everyday life.
               </p>
               <p className="text-luxury-black/80 mb-4 leading-relaxed text-lg">
-                Founded by Grace Morgan in 2020, our brand emerged from a desire to create a space where quality, style, and accessibility converge. Every collection is carefully selected to reflect the latest trends while honoring timeless classics that never go out of style.
+                Driven by a passion for style and an eye for quality, we carefully curate fashionable and affordable accessories for women who love to look their best without compromising on value. From trendy bags and watches to beautiful jewellery and other fashion essentials, each piece is selected with our customers in mind.
+              </p>
+              <p className="text-luxury-black/80 mb-4 leading-relaxed text-lg">
+                Our mission is to make style accessible, helping every woman express her unique personality through accessories that inspire confidence and leave a lasting impression.
               </p>
               <p className="text-luxury-black/80 leading-relaxed text-lg">
-                Today, we're proud to serve thousands of customers worldwide who share our commitment to elegance, authenticity, and personal expression through beautiful accessories.
+                At Everything Accessories by Grace, we are committed to providing not just products, but a pleasant shopping experience built on trust, quality, and excellent customer service. Thank you for choosing us. We are delighted to be part of your style journey.
+              </p>
+              <p className="text-luxury-rose font-serif text-xl mt-6 italic">
+                Because looking good should be within everyone's reach.
               </p>
             </div>
           </div>
         </div>
       </section>
 
-      {/* Our Values */}
+      {/* Our Core Values */}
       <section className="py-16 md:py-24 bg-luxury-cream-dark">
         <div className="max-w-6xl mx-auto px-4 md:px-6">
           <h2 className="section-title">Our Core Values</h2>
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
             <div className="bg-white rounded-lg p-8 text-center hover:shadow-xl transition">
               <div className="text-5xl mb-4">✨</div>
               <h3 className="font-serif text-xl text-luxury-black mb-3">Quality</h3>
               <p className="text-luxury-black/70">
-                We never compromise on quality. Every piece is crafted with attention to detail and made to last.
+                We are committed to offering accessories that meet high standards of style, durability, and value. Every item is carefully selected with our customers in mind.
+              </p>
+            </div>
+
+            <div className="bg-white rounded-lg p-8 text-center hover:shadow-xl transition">
+              <div className="text-5xl mb-4">💕</div>
+              <h3 className="font-serif text-xl text-luxury-black mb-3">Customer Satisfaction</h3>
+              <p className="text-luxury-black/70">
+                Our customers are at the heart of everything we do. We strive to provide a pleasant shopping experience through excellent service, prompt communication, and genuine care.
+              </p>
+            </div>
+
+            <div className="bg-white rounded-lg p-8 text-center hover:shadow-xl transition">
+              <div className="text-5xl mb-4">🌸</div>
+              <h3 className="font-serif text-xl text-luxury-black mb-3">Elegance</h3>
+              <p className="text-luxury-black/70">
+                We believe that elegance is not defined by price but by confidence and self-expression. We help our customers embrace their unique style with accessories that enhance their everyday look.
+              </p>
+            </div>
+
+            <div className="bg-white rounded-lg p-8 text-center hover:shadow-xl transition">
+              <div className="text-5xl mb-4">🤝</div>
+              <h3 className="font-serif text-xl text-luxury-black mb-3">Integrity</h3>
+              <p className="text-luxury-black/70">
+                We value honesty, transparency, and trust. We aim to build lasting relationships by delivering exactly what we promise.
               </p>
             </div>
 
             <div className="bg-white rounded-lg p-8 text-center hover:shadow-xl transition">
               <div className="text-5xl mb-4">💎</div>
-              <h3 className="font-serif text-xl text-luxury-black mb-3">Elegance</h3>
+              <h3 className="font-serif text-xl text-luxury-black mb-3">Affordability</h3>
               <p className="text-luxury-black/70">
-                Elegance is not about being loud. It's about the perfect balance of simplicity and sophistication.
+                Looking good shouldn't be out of reach. We are dedicated to making stylish and quality accessories accessible at prices our customers can appreciate.
               </p>
             </div>
 
             <div className="bg-white rounded-lg p-8 text-center hover:shadow-xl transition">
-              <div className="text-5xl mb-4">❤️</div>
-              <h3 className="font-serif text-xl text-luxury-black mb-3">Authenticity</h3>
+              <div className="text-5xl mb-4">🌟</div>
+              <h3 className="font-serif text-xl text-luxury-black mb-3">Excellence</h3>
               <p className="text-luxury-black/70">
-                We believe in being true to ourselves and our customers. Authenticity is at the heart of everything we do.
-              </p>
-            </div>
-
-            <div className="bg-white rounded-lg p-8 text-center hover:shadow-xl transition">
-              <div className="text-5xl mb-4">🌿</div>
-              <h3 className="font-serif text-xl text-luxury-black mb-3">Responsibility</h3>
-              <p className="text-luxury-black/70">
-                We're committed to ethical sourcing and sustainable practices in everything we create.
+                We continuously seek to improve, paying attention to the little details that make a big difference in the products we offer and the service we provide.
               </p>
             </div>
           </div>
         </div>
       </section>
 
-      {/* Message from Founder */}
+      {/* Message from Grace */}
       <section className="py-16 md:py-24">
         <div className="max-w-4xl mx-auto px-4 md:px-6">
           <div className="bg-gradient-to-br from-luxury-rose/5 to-luxury-gold/5 rounded-lg p-8 md:p-12 border-2 border-luxury-gold/30">
             <h2 className="font-serif text-3xl text-luxury-black mb-6">A Message from Grace</h2>
             <div className="text-lg text-luxury-black/80 space-y-4 leading-relaxed">
+              <p>Dear Valued Customer,</p>
               <p>
-                "When I started this journey, I had a simple dream: to create a space where every person could find accessories that not only looked beautiful but made them feel confident and elegant."
+                Thank you for visiting Everything Accessories by Grace.
               </p>
               <p>
-                "Over the years, I've had the privilege of meeting hundreds of amazing customers who've entrusted us with their special moments. From everyday elegance to unforgettable occasions, your stories inspire me to continuously improve and innovate."
+                This brand was born out of a simple desire — to look good and help others do the same. I have always believed that when you look good, you feel more confident, carry yourself differently, and show up as the best version of yourself.
               </p>
               <p>
-                "Each piece in our collection is handpicked with you in mind. I believe that accessories are more than just adornments—they're a form of self-expression, a way to tell your unique story to the world."
+                That belief inspired me to create a space where women can find stylish, quality, and affordable accessories that complement their personality and elevate their everyday look.
               </p>
               <p>
-                "Thank you for being part of the Grace family. Your support means everything to us, and we're committed to providing you with nothing but the best."
+                Every item you see here has been thoughtfully selected with you in mind. My goal is not just to sell accessories, but to help you express your unique style with confidence and elegance.
+              </p>
+              <p>
+                Thank you for choosing to support this dream. Your trust means so much to me, and I look forward to serving you with excellence.
               </p>
               <p className="italic text-luxury-rose font-serif text-xl pt-4">
-                With warmest regards,<br />
-                Grace Morgan<br />
-                Founder & Creative Director
-              </p>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* Why Choose Us */}
-      <section className="py-16 md:py-24 bg-luxury-black text-luxury-cream">
-        <div className="max-w-6xl mx-auto px-4 md:px-6">
-          <h2 className="font-serif text-4xl md:text-5xl text-center text-luxury-gold mb-12">Why Customers Love Us</h2>
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-            <div className="text-center">
-              <div className="text-5xl mb-4">🎯</div>
-              <h3 className="font-serif text-xl text-luxury-gold mb-3">Curated Selection</h3>
-              <p className="text-luxury-cream/80">
-                Our team personally selects every item to ensure it meets our high standards for quality and style.
-              </p>
-            </div>
-
-            <div className="text-center">
-              <div className="text-5xl mb-4">🤝</div>
-              <h3 className="font-serif text-xl text-luxury-gold mb-3">Customer Care</h3>
-              <p className="text-luxury-cream/80">
-                Your satisfaction is our priority. Our dedicated team is here to help you with any questions or concerns.
-              </p>
-            </div>
-
-            <div className="text-center">
-              <div className="text-5xl mb-4">🌍</div>
-              <h3 className="font-serif text-xl text-luxury-gold mb-3">Global Community</h3>
-              <p className="text-luxury-cream/80">
-                We're proud to serve customers from around the world who share our passion for elegance and quality.
+                With love,<br />
+                Grace<br />
+                Founder, Everything Accessories by Grace
               </p>
             </div>
           </div>
@@ -138,13 +134,13 @@ export default function AboutPage() {
       </section>
 
       {/* CTA Section */}
-      <section className="py-16 md:py-24 bg-luxury-cream-dark">
+      <section className="py-16 md:py-24 bg-luxury-black text-luxury-cream">
         <div className="max-w-4xl mx-auto px-4 md:px-6 text-center">
-          <h2 className="font-serif text-3xl md:text-4xl text-luxury-black mb-6">
-            Ready to Discover Your Perfect Accessory?
+          <h2 className="font-serif text-3xl md:text-4xl text-luxury-gold mb-6">
+            Ready to Find Your Perfect Accessory?
           </h2>
-          <p className="text-luxury-black/70 mb-8 text-lg">
-            Explore our exclusive collections and find the pieces that speak to your unique style.
+          <p className="text-luxury-cream/80 mb-8 text-lg">
+            Explore our exclusive collections and find pieces that speak to your unique style.
           </p>
           <Link to="/products" className="luxury-btn-primary">
             Shop Our Collections
