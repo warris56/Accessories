@@ -25,10 +25,12 @@ export default function ProductCard({ product, showAddToCart = true }) {
   return (
     <div className="product-card" onMouseEnter={() => setIsHovered(true)} onMouseLeave={() => setIsHovered(false)}>
       <Link to={`/product/${product.id}`}>
-        <div className="aspect-square bg-luxury-cream-dark flex items-center justify-center overflow-hidden relative">
-          <div className="text-8xl group-hover:scale-110 transition-transform duration-300">{product.image}</div>
-          
-          {/* Overlay on hover */}
+        <div className="aspect-square bg-luxury-cream-dark overflow-hidden relative">
+          <img
+            src={product.image}
+            alt={product.name}
+            className="w-full h-full object-cover transition-transform duration-300 hover:scale-105"
+          />
           {isHovered && (
             <div className="absolute inset-0 bg-luxury-black/20 animate-fadeIn"></div>
           )}
@@ -41,13 +43,16 @@ export default function ProductCard({ product, showAddToCart = true }) {
             {product.name}
           </h3>
         </Link>
-
         <p className="text-luxury-black-light text-sm mb-3 line-clamp-1">
           {product.category.charAt(0).toUpperCase() + product.category.slice(1).replace('-', ' ')}
         </p>
-
         <div className="flex items-center justify-between mb-4">
-          <span className="text-2xl font-serif text-luxury-gold">${product.price}</span>
+          <div>
+            <span className="text-2xl font-serif text-luxury-gold">₦{product.price.toLocaleString()}</span>
+            {product.priceNote && (
+              <p className="text-xs text-luxury-black/60 mt-1">{product.priceNote}</p>
+            )}
+          </div>
           {product.gender !== 'unisex' && (
             <span className="text-xs px-3 py-1 bg-luxury-rose/20 text-luxury-rose rounded-full font-medium">
               {product.gender.charAt(0).toUpperCase() + product.gender.slice(1)}
@@ -56,10 +61,7 @@ export default function ProductCard({ product, showAddToCart = true }) {
         </div>
 
         {showAddToCart && (
-          <button
-            onClick={handleAddToCart}
-            className="w-full luxury-btn-primary group relative overflow-hidden"
-          >
+          <button onClick={handleAddToCart} className="w-full luxury-btn-primary group relative overflow-hidden">
             <span className={`transition-all duration-300 ${showAdded ? 'opacity-0' : 'opacity-100'}`}>
               Add to Cart
             </span>
@@ -68,7 +70,6 @@ export default function ProductCard({ product, showAddToCart = true }) {
             )}
           </button>
         )}
-
         {!showAddToCart && (
           <Link to={`/product/${product.id}`} className="block w-full luxury-btn-secondary text-center">
             View Details

@@ -5,7 +5,7 @@ import { products, categories, filterProducts } from '../data/products'
 
 export default function ProductsPage() {
   const [searchParams, setSearchParams] = useSearchParams()
-  const [priceRange, setPriceRange] = useState([0, 500])
+  const [priceRange, setPriceRange] = useState([0, 5000])
   const [selectedGender, setSelectedGender] = useState(searchParams.get('gender') || 'all')
   const [sortBy, setSortBy] = useState('featured')
 
@@ -25,7 +25,6 @@ export default function ProductsPage() {
         result = [...result].reverse()
         break
       default:
-        // featured - keep original order
         break
     }
 
@@ -44,7 +43,6 @@ export default function ProductsPage() {
 
   return (
     <div className="min-h-screen bg-luxury-cream">
-      {/* Page Header */}
       <section className="bg-gradient-to-b from-luxury-rose/10 to-luxury-cream py-12">
         <div className="max-w-7xl mx-auto px-4 md:px-6">
           <h1 className="font-serif text-4xl md:text-5xl text-luxury-black mb-2">
@@ -58,7 +56,8 @@ export default function ProductsPage() {
 
       <div className="max-w-7xl mx-auto px-4 md:px-6 py-12">
         <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
-          {/* Sidebar - Filters */}
+
+          {/* Sidebar */}
           <div className="md:col-span-1 space-y-8">
             <div>
               <h3 className="font-serif text-lg text-luxury-black mb-4 pb-3 border-b-2 border-luxury-gold">
@@ -68,9 +67,7 @@ export default function ProductsPage() {
                 <button
                   onClick={() => handleCategoryChange('')}
                   className={`block w-full text-left px-3 py-2 rounded transition ${
-                    !categorySlug
-                      ? 'bg-luxury-rose text-white'
-                      : 'text-luxury-black hover:text-luxury-rose'
+                    !categorySlug ? 'bg-luxury-rose text-white' : 'text-luxury-black hover:text-luxury-rose'
                   }`}
                 >
                   All
@@ -80,9 +77,7 @@ export default function ProductsPage() {
                     key={cat.id}
                     onClick={() => handleCategoryChange(cat.slug)}
                     className={`block w-full text-left px-3 py-2 rounded transition text-sm ${
-                      categorySlug === cat.slug
-                        ? 'bg-luxury-rose text-white'
-                        : 'text-luxury-black hover:text-luxury-rose'
+                      categorySlug === cat.slug ? 'bg-luxury-rose text-white' : 'text-luxury-black hover:text-luxury-rose'
                     }`}
                   >
                     {cat.name}
@@ -100,19 +95,20 @@ export default function ProductsPage() {
                 <input
                   type="range"
                   min="0"
-                  max="500"
+                  max="5000"
+                  step="100"
                   value={priceRange[1]}
                   onChange={(e) => setPriceRange([priceRange[0], Number(e.target.value)])}
                   className="w-full"
                 />
                 <div className="flex justify-between text-sm">
-                  <span>${priceRange[0]}</span>
-                  <span>${priceRange[1]}</span>
+                  <span>₦{priceRange[0].toLocaleString()}</span>
+                  <span>₦{priceRange[1].toLocaleString()}</span>
                 </div>
               </div>
             </div>
 
-            {/* Gender Filter */}
+            {/* Gender */}
             <div>
               <h3 className="font-serif text-lg text-luxury-black mb-4 pb-3 border-b-2 border-luxury-gold">
                 For
@@ -165,12 +161,10 @@ export default function ProductsPage() {
               <div className="text-center py-16">
                 <div className="text-6xl mb-4">🔍</div>
                 <h3 className="font-serif text-2xl text-luxury-black mb-2">No Products Found</h3>
-                <p className="text-luxury-black/70 mb-6">
-                  Try adjusting your filters or price range
-                </p>
+                <p className="text-luxury-black/70 mb-6">Try adjusting your filters or price range</p>
                 <button
                   onClick={() => {
-                    setPriceRange([0, 500])
+                    setPriceRange([0, 5000])
                     setSelectedGender('all')
                     handleCategoryChange('')
                   }}

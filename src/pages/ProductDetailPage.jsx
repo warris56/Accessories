@@ -10,6 +10,7 @@ export default function ProductDetailPage() {
   const [quantity, setQuantity] = useState(1)
   const [selectedSize, setSelectedSize] = useState(product?.sizes?.[0] || 'One Size')
   const [selectedColor, setSelectedColor] = useState(product?.colors?.[0] || 'Default')
+  const [selectedImage, setSelectedImage] = useState(0)
   const [showAdded, setShowAdded] = useState(false)
   const addToCart = useCartStore((state) => state.addToCart)
 
@@ -18,13 +19,13 @@ export default function ProductDetailPage() {
       <div className="min-h-screen flex items-center justify-center">
         <div className="text-center">
           <h1 className="font-serif text-4xl text-luxury-black mb-4">Product Not Found</h1>
-          <Link to="/products" className="luxury-btn-primary">
-            Back to Shop
-          </Link>
+          <Link to="/products" className="luxury-btn-primary">Back to Shop</Link>
         </div>
       </div>
     )
   }
+
+  const images = product.images || [product.image]
 
   const handleAddToCart = () => {
     addToCart({
@@ -59,16 +60,36 @@ export default function ProductDetailPage() {
 
       <div className="max-w-7xl mx-auto px-4 md:px-6 py-12">
         <div className="grid grid-cols-1 md:grid-cols-2 gap-12 md:gap-16">
-          {/* Product Image */}
-          <div className="flex items-center justify-center">
-            <div className="w-full aspect-square bg-luxury-cream-dark rounded-lg flex items-center justify-center shadow-lg">
-              <div className="text-9xl">{product.image}</div>
+
+          {/* Product Images */}
+          <div>
+            <div className="w-full aspect-square bg-luxury-cream-dark rounded-lg overflow-hidden shadow-lg mb-4">
+              <img
+                src={images[selectedImage]}
+                alt={product.name}
+                className="w-full h-full object-cover"
+              />
             </div>
+            {/* Thumbnail row — only show if multiple images */}
+            {images.length > 1 && (
+              <div className="flex gap-3">
+                {images.map((img, index) => (
+                  <button
+                    key={index}
+                    onClick={() => setSelectedImage(index)}
+                    className={`w-20 h-20 rounded-lg overflow-hidden border-2 transition ${
+                      selectedImage === index ? 'border-luxury-rose' : 'border-luxury-gold/30'
+                    }`}
+                  >
+                    <img src={img} alt={`View ${index + 1}`} className="w-full h-full object-cover" />
+                  </button>
+                ))}
+              </div>
+            )}
           </div>
 
           {/* Product Details */}
           <div className="animate-slideUp">
-            {/* Category & Gender */}
             <div className="flex items-center gap-3 mb-4">
               <span className="text-xs px-3 py-1 bg-luxury-gold/20 text-luxury-gold rounded-full font-medium uppercase">
                 {product.category.replace('-', ' ')}
@@ -80,20 +101,18 @@ export default function ProductDetailPage() {
               )}
             </div>
 
-            {/* Name & Price */}
-            <h1 className="font-serif text-4xl md:text-5xl text-luxury-black mb-2">
-              {product.name}
-            </h1>
-            <p className="text-3xl text-luxury-gold font-serif mb-6">
-              ${product.price}
-            </p>
+            <h1 className="font-serif text-4xl md:text-5xl text-luxury-black mb-2">{product.name}</h1>
 
-            {/* Description */}
-            <p className="text-luxury-black/80 text-lg mb-8 leading-relaxed">
-              {product.description}
-            </p>
+            <div className="mb-6">
+              <p className="text-3xl text-luxury-gold font-serif">₦{product.price.toLocaleString()}</p>
+              {product.priceNote && (
+                <p className="text-sm text-luxury-black/60 mt-1">{product.priceNote}</p>
+              )}
+            </div>
 
-            {/* Size Selection */}
+            <p className="text-luxury-black/80 text-lg mb-8 leading-relaxed">{product.description}</p>
+
+            {/* Size */}
             {product.sizes && product.sizes.length > 0 && (
               <div className="mb-8">
                 <h3 className="font-serif text-lg text-luxury-black mb-3">Size</h3>
@@ -115,7 +134,7 @@ export default function ProductDetailPage() {
               </div>
             )}
 
-            {/* Color Selection */}
+            {/* Color */}
             {product.colors && product.colors.length > 0 && (
               <div className="mb-8">
                 <h3 className="font-serif text-lg text-luxury-black mb-3">Color</h3>
@@ -137,47 +156,34 @@ export default function ProductDetailPage() {
               </div>
             )}
 
-            {/* Quantity Selection */}
+            {/* Quantity */}
             <div className="mb-8">
               <h3 className="font-serif text-lg text-luxury-black mb-3">Quantity</h3>
               <div className="flex items-center gap-4">
                 <button
                   onClick={() => setQuantity(Math.max(1, quantity - 1))}
                   className="px-4 py-2 border-2 border-luxury-gold text-luxury-black hover:bg-luxury-gold/10"
-                >
-                  −
-                </button>
-                <span className="text-2xl font-serif text-luxury-black w-12 text-center">
-                  {quantity}
-                </span>
+                >−</button>
+                <span className="text-2xl font-serif text-luxury-black w-12 text-center">{quantity}</span>
                 <button
                   onClick={() => setQuantity(quantity + 1)}
                   className="px-4 py-2 border-2 border-luxury-gold text-luxury-black hover:bg-luxury-gold/10"
-                >
-                  +
-                </button>
+                >+</button>
               </div>
             </div>
 
             {/* Buttons */}
             <div className="space-y-3 mb-8">
-              <button
-                onClick={handleBuyNow}
-                className="w-full luxury-btn-primary text-lg"
-              >
-                Buy Now
-              </button>
+              <button onClick={handleBuyNow} className="w-full luxury-btn-primary text-lg">Buy Now</button>
               <button
                 onClick={handleAddToCart}
-                className={`w-full luxury-btn-secondary text-lg transition-all ${
-                  showAdded ? 'bg-luxury-gold text-luxury-cream' : ''
-                }`}
+                className={`w-full luxury-btn-secondary text-lg transition-all ${showAdded ? 'bg-luxury-gold text-luxury-cream' : ''}`}
               >
                 {showAdded ? '✓ Added to Cart' : 'Add to Cart'}
               </button>
             </div>
 
-            {/* Product Info */}
+            {/* Info */}
             <div className="border-t-2 border-luxury-gold/20 pt-8 space-y-4">
               <div className="flex items-start gap-3">
                 <span className="text-2xl">✨</span>
